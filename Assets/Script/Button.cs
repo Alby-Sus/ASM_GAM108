@@ -23,7 +23,7 @@ public class MainMenu : MonoBehaviour
 
     public void OpenTutorial()
     {
-        SceneManager.LoadScene("TutorialScene");
+        SceneManager.LoadScene("Tutorial");
     }
 
     public void ExitGame()
