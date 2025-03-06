@@ -6,6 +6,7 @@ using System.Diagnostics.Contracts;
 using System.Threading;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Player : MonoBehaviour
@@ -182,7 +183,14 @@ public class Player : MonoBehaviour
         {
             WinCanvas.SetActive(true);
         }
-        Time.timeScale = 0;
+        Time.timeScale = 1; // Đảm bảo thời gian không bị dừng lại
+        StartCoroutine(LoadNextLevel());
+    }
+
+    IEnumerator LoadNextLevel()
+    {
+        yield return new WaitForSeconds(5); // Chờ 5 giây trước khi chuyển màn
+        SceneManager.LoadScene("Level2"); // Chuyển sang màn Level2
     }
 
     void CollectCoin(GameObject coin)
