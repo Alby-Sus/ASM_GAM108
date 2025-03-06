@@ -1,38 +1,33 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class Button : MonoBehaviour
+public class MainMenu : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public Button startButton;
+    public Button tutorialButton;
+    public Button exitButton;
+
     void Start()
     {
-        
+        // Gán sự kiện OnClick cho các nút
+        startButton.onClick.AddListener(StartGame);
+        tutorialButton.onClick.AddListener(OpenTutorial);
+        exitButton.onClick.AddListener(ExitGame);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void StartGame()
     {
-        
-    }
-    public void RestartGame()
-    {
-        Time.timeScale = 1;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("GameScene");
     }
 
-    public void NextScene()
+    public void OpenTutorial()
     {
-        Time.timeScale = 1;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("TutorialScene");
     }
-    public void Menu()
-    {
-        Time.timeScale = 1;
-        SceneManager.LoadScene("Level 0");
-    }
+
     public void ExitGame()
     {
-        Debug.Log("Đa thoat game");
         Application.Quit();
     }
 }
